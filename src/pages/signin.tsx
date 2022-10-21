@@ -1,7 +1,7 @@
 import { VStack } from "@chakra-ui/react";
 import { getProviders } from "next-auth/react"
 import { Provider } from "next-auth/providers";
-import AuthButton from "@/components/auth/AuthButton";
+import LoginForm from "@/components/auth/LoginForm";
 
 export default function Signin({ providers }: { providers: Provider }) {
 
@@ -14,7 +14,7 @@ export default function Signin({ providers }: { providers: Provider }) {
         placeSelf="center"
         spacing="6"
       >
-        <AuthButton providers={providers} />
+        <LoginForm providers={providers}/>
       </VStack>
     )
 }

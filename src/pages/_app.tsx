@@ -7,7 +7,6 @@ import '../i18n';
 import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log(pageProps)
   return (
     <ChakraProvider theme={theme}>
       <SessionProvider session={pageProps.session}>
