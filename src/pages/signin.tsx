@@ -19,7 +19,7 @@ export default function Signin({ providers }: { providers: Provider }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const providers = await getProviders();
     return {
       props: { providers },
