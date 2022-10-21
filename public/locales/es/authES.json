@@ -1,0 +1,8 @@
+{
+    "login": {
+        "login_title": "Iniciar sesión",
+        "not_a_member": "¿Nuevo en BynDeco?",
+        "signup_free": "Regístrate gratis",
+        "logout": "Cerrar sesión"
+    }
+}
