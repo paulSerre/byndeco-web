@@ -15,7 +15,7 @@ export default function LandingPage() {
       </Head>
 
       <Flex>
-        Hello !
+        Hello world
       </Flex>
     </ErrorBoundary>
   )
