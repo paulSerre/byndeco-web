@@ -5,12 +5,14 @@ import Layout from '@/components/common/Layout'
 import { getProviders, SessionProvider, useSession } from 'next-auth/react'
 import '../i18n';
 import { useRouter } from 'next/router'
+import Navbar from '@/components/common/Navbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <SessionProvider session={pageProps.session}>
         <Layout>
+          <Navbar/>
         {/* @ts-ignore */}
           {Component.auth ? (
             <Auth>
