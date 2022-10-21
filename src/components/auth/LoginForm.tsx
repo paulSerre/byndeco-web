@@ -4,7 +4,7 @@ import { Provider } from "next-auth/providers";
 import { FaGoogle } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
-export default function LoginForm({ providers }: { providers: Provider}) {
+export default function LoginForm({ providers }: { providers: Provider}) {
 
     const { t } = useTranslation('auth', { keyPrefix: 'login' });
     
