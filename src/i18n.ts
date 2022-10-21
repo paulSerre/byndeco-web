@@ -24,6 +24,7 @@ i18n
     resources,
     ns: [
       'auth',
+      'common',
     ],
     defaultNS: 'auth',
     fallbackLng: 'es',

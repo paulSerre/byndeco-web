@@ -36,7 +36,8 @@ const NavLink = ({ label, href }: { label: string, href: string }) => (
 );
 
 export default function Navbar() {
-  const { t } = useTranslation(['auth', 'common']);
+  const { t } = useTranslation<['auth', 'common']>(['auth', 'common'])
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   
   const { data: session } = useSession();
@@ -108,7 +109,7 @@ export default function Navbar() {
                 >{t('auth:login.logout')}</MenuItem>
               </MenuList>
             </Menu> :
-            <Link href="/signin" passHref>
+            <Link href="/signin">
                 <Button size="sm" minW="unset">
                     {t('auth:login.login_title')}
                 </Button>

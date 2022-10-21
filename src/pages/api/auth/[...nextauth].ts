@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "lib/mongodb"
 import NextAuth, { NextAuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import FacebookProvider from "next-auth/providers/facebook"
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.JWT_SECRET,
@@ -17,6 +19,10 @@ export const authOptions: NextAuthOptions = {
           response_type: "code"
         },
       },
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
     }),
     // ...add more providers here
   ],
