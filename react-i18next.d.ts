@@ -10,7 +10,6 @@ declare module 'react-i18next' {
     defaultNS: 'auth',
     resources: {
       auth: typeof auth;
-      common: typeof common;
     }
   }
 }

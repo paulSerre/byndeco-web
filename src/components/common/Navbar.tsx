@@ -36,7 +36,7 @@ const NavLink = ({ label, href }: { label: string, href: string }) => (
 );
 
 export default function Navbar() {
-  const { t } = useTranslation<['auth', 'common']>(['auth', 'common'])
+  const { t } = useTranslation('auth')
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   
@@ -44,14 +44,14 @@ export default function Navbar() {
 
   const Links = useMemo(() => ([
     {
-      label: t('common:account'),
+      label: 'Mi Cuenta',
       href: '/account'
     },
     {
-      label: t('common:products'),
+      label: 'Productos',
       href: '/products'
     }
-  ]), [t]);
+  ]), []);
 
   const handleOnSignOut = useCallback(() => {
     signOut({ callbackUrl: '/' })
@@ -106,12 +106,12 @@ export default function Navbar() {
                     fontSize="sm"
                     py="2"
                     onClick={handleOnSignOut}
-                >{t('auth:login.logout')}</MenuItem>
+                >{t('login.logout')}</MenuItem>
               </MenuList>
             </Menu> :
             <Link href="/signin">
                 <Button size="sm" minW="unset">
-                    {t('auth:login.login_title')}
+                    {t('login.login_title')}
                 </Button>
             </Link>
             }
