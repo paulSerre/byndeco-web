@@ -10,7 +10,9 @@ export const resources = {
     auth: authES,
     common: commonES,
   },
-};
+} as const;
+
+export const defaultNS = 'auth'
 
 i18n
   // detect user language
@@ -26,7 +28,8 @@ i18n
       'auth',
       'common',
     ],
-    defaultNS: 'auth',
+    defaultNS,
+    lng: 'es',
     fallbackLng: 'es',
     debug: false,
     interpolation: {

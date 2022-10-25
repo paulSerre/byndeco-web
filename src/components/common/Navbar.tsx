@@ -36,7 +36,7 @@ const NavLink = ({ label, href }: { label: string, href: string }) => (
 );
 
 export default function Navbar() {
-  const { t } = useTranslation('auth')
+  const { t } = useTranslation()
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   
@@ -73,6 +73,7 @@ export default function Navbar() {
               src='/svg/logo.svg'
               width={50}
               height={50}
+              alt='logo'
             />
             <HStack
               as={'nav'}
