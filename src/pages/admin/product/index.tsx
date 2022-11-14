@@ -4,7 +4,8 @@ import { IProduct } from "models/Product.schema";
 import { useState } from "react"
 
 export default function Product() {
-    const [pagination, setPagination] = useState({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [pagination, _setPagination] = useState({
         page: 0,
         limit: 100,
     })
