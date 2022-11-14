@@ -1,5 +1,4 @@
-import { extendTheme } from '@chakra-ui/react';
-import { theme as chakraTheme } from "@chakra-ui/react";
+import { extendTheme, theme as chakraTheme } from '@chakra-ui/react';
 import styles from './foundation/styles';
 
 const config = {
@@ -11,7 +10,10 @@ const config = {
 const theme = {
     ...chakraTheme,
     config,
-    styles
+    styles,
+    fonts: {
+        body: `'Raleway', sans-serif`,
+    }
 }
 
 export default extendTheme(theme);

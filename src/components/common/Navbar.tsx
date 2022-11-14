@@ -4,7 +4,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
@@ -15,43 +14,41 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  Image,
+  Link
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { signOut, useSession } from 'next-auth/react';
 import { useTranslation } from 'react-i18next';
+import { Roles } from 'types/roles';
+import Logo from './icons/Logo';
+import { useRouter } from 'next/router';
 
-const NavLink = ({ label, href }: { label: string, href: string }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={href}>
-    {label}
-  </Link>
-);
 
 export default function Navbar() {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['auth', 'common'])
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const { pathname } = useRouter();
   
   const { data: session } = useSession();
 
+  const isAdmin = useMemo(() => session?.user?.roles.includes(Roles.ADMIN), [session?.user?.roles]);
+
   const Links = useMemo(() => ([
     {
-      label: 'Mi Cuenta',
-      href: '/account'
+      label: t('common:introduction'),
+      href: '/'
     },
     {
-      label: 'Productos',
+      label: t('common:products'),
       href: '/products'
+    },
+    {
+      label: t('common:contact'),
+      href: '/contact'
     }
-  ]), []);
+  ]), [t]);
 
   const handleOnSignOut = useCallback(() => {
     signOut({ callbackUrl: '/' })
@@ -59,32 +56,40 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={{ base: 0, lg: 14}}>
+        <Flex h={{ base: 'auto', lg: 28}} alignItems={'flex-end'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={'Open Menu'}
-            display={{ md: 'none' }}
+            display={{ lg: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'center'}>
-            <Image
-              src='/svg/logo.svg'
-              width={50}
-              height={50}
-              alt='logo'
-            />
-            <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link.label} {...link}/>
-              ))}
-            </HStack>
+          <HStack
+            as={'nav'}
+            spacing={16}
+            display={{ base: 'none', lg: 'flex' }}
+            mb={4}
+            flexGrow={{ base: 'auto', lg: 1}}
+            flexBasis={{ base: 'auto', lg: 0}}
+          >
+            {Links.map(({ label, href }) => (
+              <Link 
+                key={label} 
+                href={href} 
+                fontWeight={href === pathname ? 600 : 500}
+                cursor='pointer'
+                _hover={{ fontWeight: 600 }}
+              >{label.toUpperCase()}</Link>
+            ))}
           </HStack>
-          <Flex alignItems={'center'}>
+          <Logo boxSize={{ base: 16, lg: 28}}/>
+          <Flex 
+            justifyContent='flex-end'
+            mb={4}
+            flexGrow={{ base: 'auto', lg: 1}}
+            flexBasis={{ base: 'auto', lg: 0}}
+          >
             {session && session.user ?
             <Menu>
               <MenuButton
@@ -99,20 +104,32 @@ export default function Navbar() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <Link href='/account'>
+                  <MenuItem>
+                    {t('common:account')}
+                  </MenuItem>
+                </Link>
                 <MenuDivider />
+                {isAdmin ?                 
+                <>
+                  <Link href='/admin/product'>
+                    <MenuItem>
+                      {t('common:admin_panel')}
+                    </MenuItem>
+                  </Link>
+                <MenuDivider />
+                </> : null}
                 <MenuItem
                     fontWeight="400"
                     fontSize="sm"
                     py="2"
                     onClick={handleOnSignOut}
-                >{t('login.logout')}</MenuItem>
+                >{t('auth:login.logout')}</MenuItem>
               </MenuList>
             </Menu> :
             <Link href="/signin">
                 <Button size="sm" minW="unset">
-                    {t('login.login_title')}
+                    {t('auth:login.login_title')}
                 </Button>
             </Link>
             }
@@ -120,17 +137,15 @@ export default function Navbar() {
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: 'none' }}>
+          <Box pb={4} display={{ lg: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link.label} {...link}/>
+              {Links.map(({ label, href }) => (
+                <Link key={label} href={href}>{label}</Link>
               ))}
             </Stack>
           </Box>
         ) : null}
       </Box>
-
-      <Box p={4}>Main Content Here</Box>
     </>
   );
 }

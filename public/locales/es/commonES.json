@@ -1,4 +1,7 @@
 {
     "account": "Mi Cuenta",
-    "products": "Productos"
+    "introduction": "Inicio",
+    "products": "Productos",
+    "contact": "Contacto",
+    "admin_panel": "Panel de administración"
 }

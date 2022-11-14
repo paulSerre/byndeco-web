@@ -1,4 +1,5 @@
 import ErrorBoundary from '@/components/common/ErrorBoundary'
+import Navbar from '@/components/common/Navbar'
 import { Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 
@@ -13,7 +14,7 @@ export default function LandingPage() {
         />
         <meta name="author" content="ByN Deco" />
       </Head>
-
+      <Navbar/>
       <Flex>
         Hello world
       </Flex>
