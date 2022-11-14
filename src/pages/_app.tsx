@@ -6,7 +6,6 @@ import Layout from '@/components/common/Layout'
 import { SessionProvider, useSession } from 'next-auth/react'
 import '../i18n';
 import { useRouter } from 'next/router'
-import ErrorBoundary from '@/components/common/ErrorBoundary'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
