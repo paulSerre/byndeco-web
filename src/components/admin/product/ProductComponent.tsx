@@ -1,4 +1,3 @@
-import { CalendarIcon } from "@chakra-ui/icons"
 import { Flex, HStack, Spacer, VStack, Image, Text } from "@chakra-ui/react"
 import { IProduct } from "models/Product.schema"
 
