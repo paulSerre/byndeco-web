@@ -1,7 +1,18 @@
 {
-    "account": "Mi Cuenta",
-    "introduction": "Inicio",
-    "products": "Productos",
-    "contact": "Contacto",
-    "admin_panel": "Panel de administración"
+    "navbar": {
+        "account": "Mi Cuenta",
+        "introduction": "Inicio",
+        "products": "Productos",
+        "contact": "Contacto",
+        "orders": "Pedidos",
+        "admin_panel": "Panel de administración",
+        "signin": "Iniciar sesión"
+    },
+    "footer": {
+        "help": "Ayuda",
+        "delivery": "Envios",
+        "returns_exchange": "Cambios y devoluciones",
+        "terms_conditions": "Terminos y condiciones",
+        "payment_methods": "Formas de pago"
+    }
 }

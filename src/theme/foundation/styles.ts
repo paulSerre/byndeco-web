@@ -1,4 +1,4 @@
-export const styles = {
+const styles = {
   global: () => ({
     'html, body, #__next, #root': {
       lineHeight: 'tall',
