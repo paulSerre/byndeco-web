@@ -16,27 +16,27 @@ export default function Footer() {
 
   const center = useMemo(() => ({lat: -46.44526533318304, lng: -67.5206430306525}), [])
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
 
     const Links = useMemo(() => ([
         {
-          label: t('common:footer.help'),
+          label: t('footer.help'),
           href: '/help'
         },
         {
-          label: t('common:footer.delivery'),
+          label: t('footer.delivery'),
           href: '/delivery'
         },
         {
-          label: t('common:footer.returns_exchange'),
+          label: t('footer.returns_exchange'),
           href: '/returns'
         },
         {
-          label: t('common:footer.terms_conditions'),
+          label: t('footer.terms_conditions'),
           href: '/terms'
         },
         {
-          label: t('common:footer.payment_methods'),
+          label: t('footer.payment_methods'),
           href: '/payment'
         }
       ]), [t]);
