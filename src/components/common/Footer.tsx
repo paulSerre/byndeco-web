@@ -1,4 +1,4 @@
-import { HStack, VStack, useColorModeValue, Link, Box, Text } from "@chakra-ui/react";
+import { HStack, VStack, useColorModeValue, Link, Text } from "@chakra-ui/react";
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
